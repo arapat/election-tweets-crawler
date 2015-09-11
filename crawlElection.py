@@ -16,8 +16,18 @@ consumer_key = ""
 consumer_secret = ""
 
 # Trace
-trace = ['donald trump', 'hillary clinton', 'bernie sanders', 'ted cruz', 'jeb bush', 'scott walker', 'ben carson', 'presidential candidate', 'joe biden', 'planned parenthood', 'marco rubio', 'bill clinton', 'rand paul', 'chris christie', 'birthright citizenship', 'presidential election', 'george bush', 'republican presidential', 'paul rand', 'sarah palin', 'john kasich', 'presidential candidates', 'running president', '2016 election', 'presidential campaign', 'gop candidates', 'super pac', 'presidential race', 'gop presidential', "martin o'malley", 'gop candidate', 'hilary clinton', 'republican party', 'elizabeth warren', 'presidential debate', 'next president', 'bush campaign', 'democratic party', 'president 2016', 'cruz 2016', 'democratic presidential', 'gop primary', 'democratic nomination', 'republican nomination'] \
-    + ['trump', 'hillary', 'clinton', 'sanders', 'bernie', 'jeb', 'gop', 'biden', 'christie', 'republican', 'hillaryclinton', 'tedcruz', 'republicans', 'huckabee', 'berniesanders', 'democrats', 'jindal', 'jebbush', 'health', 'democrat', 'sensanders']
+trace = ['donald trump', 'hillary clinton', 'bernie sanders', 'ted cruz', 'jeb bush', 'scott walker', \
+    'ben carson', 'presidential candidate', 'joe biden', 'planned parenthood', 'marco rubio', 'bill clinton', \
+    'rand paul', 'chris christie', 'birthright citizenship', 'presidential election', 'george bush', \
+    'republican presidential', 'paul rand', 'sarah palin', 'john kasich', 'presidential candidates', \
+    'running president', '2016 election', 'presidential campaign', 'gop candidates', 'super pac', \
+    'presidential race', 'gop presidential', "martin o'malley", 'gop candidate', 'hilary clinton', \
+    'republican party', 'elizabeth warren', 'presidential debate', 'next president', 'bush campaign', \
+    'democratic party', 'president 2016', 'cruz 2016', 'democratic presidential', 'gop primary', \
+    'democratic nomination', 'republican nomination'] \
+    + ['trump', 'hillary', 'clinton', 'sanders', 'bernie', 'jeb', 'gop', 'biden', 'christie', 'republican', \
+        'hillaryclinton', 'tedcruz', 'republicans', 'huckabee', 'berniesanders', 'democrats', 'jindal', \
+        'jebbush', 'health', 'democrat', 'sensanders']
 
 #This is a basic listener that just prints received tweets to stdout.
 class StdOutListener(StreamListener):
