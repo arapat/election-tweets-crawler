@@ -5,6 +5,7 @@ from tweepy import OAuthHandler
 from tweepy import Stream
 
 import os
+import sys
 import json
 from subprocess import Popen
 from subprocess import PIPE
@@ -15,8 +16,8 @@ access_token_secret = ""
 consumer_key = ""
 consumer_secret = ""
 
-# Trace
-trace = ['donald trump', 'hillary clinton', 'bernie sanders', 'ted cruz', 'jeb bush', 'scott walker', \
+# Track
+track = ['donald trump', 'hillary clinton', 'bernie sanders', 'ted cruz', 'jeb bush', 'scott walker', \
     'ben carson', 'presidential candidate', 'joe biden', 'planned parenthood', 'marco rubio', 'bill clinton', \
     'rand paul', 'chris christie', 'birthright citizenship', 'presidential election', 'george bush', \
     'republican presidential', 'paul rand', 'sarah palin', 'john kasich', 'presidential candidates', \
@@ -29,38 +30,39 @@ trace = ['donald trump', 'hillary clinton', 'bernie sanders', 'ted cruz', 'jeb b
         'hillaryclinton', 'tedcruz', 'republicans', 'huckabee', 'berniesanders', 'democrats', 'jindal', \
         'jebbush', 'health', 'democrat', 'sensanders']
 
-#This is a basic listener that just prints received tweets to stdout.
 class StdOutListener(StreamListener):
 
     def __init__(self):
-      self.threshold = 100000
+      self.filename = 'tweets'
+      self.threshold = 4 * 1024 * 1024 * 1024
       self.counter = 0
+      self.bucketName = ''
 
     def on_data(self, data):
-        try:
-            #s = os.statvfs('/')
-            #if s.f_bavail <= self.threshold:
-            #  self.counter = self.counter + 1
-            #  filename = 'election%03d' % self.counter
-            #  command = "aws s3 cp tweets s3://twitter-collect/data/%s" % filename
-            #  process = Popen(command, shell=True, stdout=PIPE)
-            #  process.wait()
-            #  process = Popen("rm tweets", shell=True, stdout=PIPE)
-            #  process.wait()
-            json.loads(data)
-            with open('tweets', 'a') as f:
-              f.write(data)
-        except:
-            pass
-        return True
+      if os.path.isfile(self.filename) and os.stat(self.filename).st_size >= self.threshold:
+        self.counter = self.counter + 1
+        filename = 'election%03d' % self.counter
+        sys.stdout.write('uploading %s...\n' % (filename))
+        sys.stdout.flush()
+        command = "aws s3 cp %s s3://%s/data/%s" % (self.filename, self.bucketName, filename)
+        process = Popen(command, shell=True, stdout=PIPE)
+        process.wait()
+        os.remove(fn)
+        sys.stdout.write('upload done.\n')
+        sys.stdout.flush()
+
+      json.loads(data)
+      with open(self.filename, 'a') as f:
+        f.write(data)
+      return True
 
     def on_error(self, status):
-        print status
+      print status
 
 
 if __name__ == '__main__':
 
-    #This handles Twitter authetification and the connection to Twitter Streaming API
+    #This handles Twitter authentication and the connection to Twitter Streaming API
     l = StdOutListener()
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
@@ -68,7 +70,8 @@ if __name__ == '__main__':
 
     while True:
       try:
-        stream.filter(track=trace)
-      except:
+        stream.filter(track=track)
+      except Exception as e:
+        print e
         pass
 
