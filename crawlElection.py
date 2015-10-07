@@ -47,7 +47,7 @@ class StdOutListener(StreamListener):
         command = "aws s3 cp %s s3://%s/data/%s" % (self.filename, self.bucketName, filename)
         process = Popen(command, shell=True, stdout=PIPE)
         process.wait()
-        os.remove(fn)
+        os.remove(self.filename)
         sys.stdout.write('upload done.\n')
         sys.stdout.flush()
 
