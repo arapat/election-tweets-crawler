@@ -28,7 +28,8 @@ track = ['donald trump', 'hillary clinton', 'bernie sanders', 'ted cruz', 'jeb b
     'democratic nomination', 'republican nomination'] \
     + ['trump', 'hillary', 'clinton', 'sanders', 'bernie', 'jeb', 'gop', 'biden', 'christie', 'republican', \
         'hillaryclinton', 'tedcruz', 'republicans', 'huckabee', 'berniesanders', 'democrats', 'jindal', \
-        'jebbush', 'health', 'democrat', 'sensanders']
+        'jebbush', 'health', 'democrat', 'sensanders'] \
+    + ['fiorina', 'carly fiorina']
 
 class StdOutListener(StreamListener):
 
