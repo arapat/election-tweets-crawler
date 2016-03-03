@@ -10,6 +10,9 @@ import json
 from subprocess import Popen
 from subprocess import PIPE
 
+COUNTER_INIT = 0
+TRACK_FILE = 'track-mar03.txt'
+
 #Variables that contains the user credentials to access Twitter API 
 access_token = ""
 access_token_secret = ""
@@ -17,26 +20,22 @@ consumer_key = ""
 consumer_secret = ""
 
 # Track
-track = ['donald trump', 'hillary clinton', 'bernie sanders', 'ted cruz', 'jeb bush', 'scott walker', \
-    'ben carson', 'presidential candidate', 'joe biden', 'planned parenthood', 'marco rubio', 'bill clinton', \
-    'rand paul', 'chris christie', 'birthright citizenship', 'presidential election', 'george bush', \
-    'republican presidential', 'paul rand', 'sarah palin', 'john kasich', 'presidential candidates', \
-    'running president', '2016 election', 'presidential campaign', 'gop candidates', 'super pac', \
-    'presidential race', 'gop presidential', "martin o'malley", 'gop candidate', 'hilary clinton', \
-    'republican party', 'elizabeth warren', 'presidential debate', 'next president', 'bush campaign', \
-    'democratic party', 'president 2016', 'cruz 2016', 'democratic presidential', 'gop primary', \
-    'democratic nomination', 'republican nomination'] \
-    + ['trump', 'hillary', 'clinton', 'sanders', 'bernie', 'jeb', 'gop', 'biden', 'christie', 'republican', \
-        'hillaryclinton', 'tedcruz', 'republicans', 'huckabee', 'berniesanders', 'democrats', 'jindal', \
-        'jebbush', 'health', 'democrat', 'sensanders'] \
-    + ['fiorina', 'carly fiorina']
+track = []
+
+def read_track():
+  with open(TRACK_FILE) as f:
+    for w in f:
+      track.append(w.strip())
+  print len(track)
+  print track
+
 
 class StdOutListener(StreamListener):
 
     def __init__(self):
       self.filename = 'tweets'
       self.threshold = 4 * 1024 * 1024 * 1024
-      self.counter = 0
+      self.counter = COUNTER_INIT
       self.bucketName = ''
 
     def on_data(self, data):
@@ -62,6 +61,8 @@ class StdOutListener(StreamListener):
 
 
 if __name__ == '__main__':
+
+    read_track()
 
     #This handles Twitter authentication and the connection to Twitter Streaming API
     l = StdOutListener()
