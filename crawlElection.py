@@ -26,9 +26,12 @@ def read_track():
   with open(TRACK_FILE) as f:
     for w in f:
       track.append(w.strip())
-  print len(track)
-  print track
-
+  print 'KEYWORDS'
+  print '============================='
+  print ', '.join(track)
+  print '============================='
+  print "Number of keywords:", len(track)
+  print
 
 class StdOutListener(StreamListener):
 
@@ -63,6 +66,7 @@ class StdOutListener(StreamListener):
 if __name__ == '__main__':
 
     read_track()
+    print 'Start streaming...'
 
     #This handles Twitter authentication and the connection to Twitter Streaming API
     l = StdOutListener()
