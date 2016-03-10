@@ -3,12 +3,9 @@ hillary
 bernie
 clinton
 sanders
-cruz
 gop
 @realdonaldtrump
-president
 @hillaryclinton
-rubio
 @berniesanders
 @tedcruz
 republican
@@ -19,7 +16,6 @@ republicans
 #trump2016
 candidate
 #gopdebate
-#tcot
 christie
 election
 democrats
@@ -31,7 +27,6 @@ candidates
 #gop
 #demdebate
 carson
-#pjnet
 #tedcruz
 @sensanders
 @jebbush
@@ -55,9 +50,7 @@ conservative
 #bernie
 dems
 liberal
-nominee
 #ccot
-nomination
 #p2
 #alwaystrump
 #donaldtrump
