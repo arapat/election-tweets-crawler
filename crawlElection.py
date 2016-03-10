@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+from time import localtime, strftime
 
 import boto3
 from tweepy.streaming import StreamListener
@@ -35,7 +36,8 @@ track = []
 
 
 def show_message(message):
-    sys.stdout.write(message + "\n\n")
+    sys.stdout.write("[%s] " % strftime("%Y-%m-%d %H:%M:%S", localtime()))
+    sys.stdout.write(message + "\n")
     sys.stdout.flush()
 
 
@@ -43,9 +45,8 @@ def read_track():
     with open(TRACK_KEYWORDS_FILE_NAME) as f:
         for w in f:
             track.append(w.strip())
-    show_message("KEYWORDS:")
-    show_message(", ".join(track))
     show_message("Number of keywords: %d" % len(track))
+    show_message("All keywords: " + ", ".join(track))
 
 
 class StdOutListener(StreamListener):
