@@ -18,6 +18,7 @@ LOCAL_FILE_NAME = "tweets"
 REMOTE_FILE_NAME = "tweets/stream"
 REMOTE_FILE_NAME_STARTING_NUM = 0
 MAXIMUM_FILE_SIZE = 4 * 1024 * 1024 * 1024  # local file won't exceed 4 GB
+MAXIMUM_CACHE_SIZE = 1000
 
 # Twitter API user credentials
 TWITTER_ACCESS_TOKEN = ""
@@ -53,6 +54,7 @@ class StdOutListener(StreamListener):
     def __init__(self, s3):
         self.s3 = s3
         self.counter = REMOTE_FILE_NAME_STARTING_NUM
+        self.cache = []
 
     def on_data(self, data):
         if (os.path.isfile(LOCAL_FILE_NAME) and
@@ -65,9 +67,11 @@ class StdOutListener(StreamListener):
             sys.stdout.write('Upload done.')
             sys.stdout.flush()
 
-        json.loads(data)
-        with open(LOCAL_FILE_NAME, 'a') as f:
-            f.write(data)
+        self.cache.append(data)
+        if len(data) >= MAXIMUM_CACHE_SIZE:
+            with open(LOCAL_FILE_NAME, 'a') as f:
+                f.write(''.join(self.cache))
+                self.cache = []
         return True
 
     def on_error(self, status):
@@ -97,4 +101,4 @@ if __name__ == '__main__':
         except Exception as e:
             # Keep the crawler running without being interupted by exceptions
             show_message("Exception (skipped):")
-            show_message(e)
+            show_message(str(e))
