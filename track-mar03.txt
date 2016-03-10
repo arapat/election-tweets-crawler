@@ -10,20 +10,16 @@ gop
 @tedcruz
 republican
 #trump
-presidential
 #feelthebern
 republicans
 #trump2016
-candidate
 #gopdebate
 christie
-election
 democrats
 #cruzcrew
 democratic
 #berniesanders
 #imwithher
-candidates
 #gop
 #demdebate
 carson
@@ -32,7 +28,6 @@ carson
 @jebbush
 democrat
 @marcorubio
-caucus
 @gop
 #supertuesday
 #bernie2016
@@ -42,15 +37,12 @@ caucus
 kasich
 #hillary
 endorsement
-conservative
 #demtownhall
 #trumptrain
 #nevertrump
 #uniteblue
 #bernie
 dems
-liberal
-#ccot
 #p2
 #alwaystrump
 #donaldtrump
@@ -58,19 +50,15 @@ liberal
 #hillary2016
 #wearebernie
 #wakeupamerica
-conservatives
 #clinton
 #election2016
 hilary
 benghazi
 #realdonaldtrump
 #whichhillary
-presidency
 #dumptrump
-caucuses
 #votetrump2016
 dnc
-delegates
 #rubio
 romney
 #votetrump
@@ -102,15 +90,12 @@ trump supporters
 republican party
 bill clinton
 vote trump
-presidential election
 trump university
-presidential candidate
 clinton wins
 sanders wins
 trump 2016
 trump supporter
 democratic party
-presidential candidates
 bernie supporters
 gop primary
 hilary clinton
@@ -118,7 +103,6 @@ trump campaign
 cruz wins
 planned parenthood
 general election
-2016 presidential
 gop nomination
 elizabeth warren
 vote bernie
@@ -131,7 +115,6 @@ endorse trump
 john kasich
 trump winning
 republican presidential
-win elections
 endorses trump
 trump voters
 gop candidates
@@ -147,13 +130,11 @@ rafael edward
 edward cruz
 trump presidency
 gop presidential
-presidential nominee
 republican voters
 trump takedown
 presidential primary
 donald drumpf
 republican primary
-presidential campaign
 clinton campaign
 clinton won
 trump dominates
@@ -165,7 +146,6 @@ endorsed trump
 democratic presidential
 delegate count
 trump endorsement
-president 2016
 bernie 2016
 endorsing trump
 jeb bush
@@ -176,13 +156,9 @@ rand paul
 birthright citizenship
 george bush
 sarah palin
-running president
-2016 election
-presidential race
 martin o'malley
 gop candidate
 presidential debate
-next president
 bush campaign
 cruz 2016
 democratic nomination

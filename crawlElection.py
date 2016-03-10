@@ -71,7 +71,7 @@ class StdOutListener(StreamListener):
         if len(data) >= MAXIMUM_CACHE_SIZE:
             with open(LOCAL_FILE_NAME, 'a') as f:
                 f.write(''.join(self.cache))
-                self.cache = []
+            self.cache = []
         return True
 
     def on_error(self, status):
