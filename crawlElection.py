@@ -74,8 +74,10 @@ class StdOutListener(StreamListener):
             self.cache = []
         return True
 
-    def on_error(self, status):
-        print status
+    def on_error(self, status_code):
+        show_message("Error code: %d" % status_code)
+        if status_code == 420:
+            sleep(180)
 
 
 if __name__ == '__main__':
