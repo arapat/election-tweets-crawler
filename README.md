@@ -1,6 +1,9 @@
 # A simple tweets crawler
 A streaming tweets crawler for collecting tweets related to 2016 US presidential election.
 
+## Install dependencies
+`pip install -r requirements.txt`
+
 ## How were the keywords generated?
 1. Count the frequency of 1-gram and 2-gram in the recently collected data.
 2. From the most frequent 1000 1-gram and the most frequent 1000 2-gram, manually select keywords that are related to the presidential election.
