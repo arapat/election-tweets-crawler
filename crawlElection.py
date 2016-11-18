@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-from time import localtime, strftime
+from time import localtime, strftime, sleep
 
 import boto3
 from tweepy.streaming import StreamListener
@@ -55,6 +55,7 @@ class StdOutListener(StreamListener):
         self.s3 = s3
         self.counter = REMOTE_FILE_NAME_STARTING_NUM
         self.cache = []
+        self._420 = 0
 
     def on_data(self, data):
         if (os.path.isfile(LOCAL_FILE_NAME) and
@@ -69,6 +70,7 @@ class StdOutListener(StreamListener):
 
         self.cache.append(data)
         if len(data) >= MAXIMUM_CACHE_SIZE:
+            self._420 = 0
             with open(LOCAL_FILE_NAME, 'a') as f:
                 f.write(''.join(self.cache))
             self.cache = []
@@ -76,8 +78,11 @@ class StdOutListener(StreamListener):
 
     def on_error(self, status_code):
         show_message("Error code: %d" % status_code)
+        show_message("Now sleeping...")
         if status_code == 420:
-            sleep(180)
+            self._420 = self._420 + 1
+            show_message("Now sleeping %d seconds..." % (60 * self._420))
+            sleep(60 * self._420)
 
 
 if __name__ == '__main__':
