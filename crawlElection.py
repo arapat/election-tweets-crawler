@@ -69,7 +69,7 @@ class StdOutListener(StreamListener):
             sys.stdout.flush()
 
         self.cache.append(data)
-        if len(data) >= MAXIMUM_CACHE_SIZE:
+        if len(self.cache) >= MAXIMUM_CACHE_SIZE:
             self._420 = 0
             with open(LOCAL_FILE_NAME, 'a') as f:
                 f.write(''.join(self.cache))
